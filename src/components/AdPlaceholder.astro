@@ -1,0 +1,34 @@
+---
+interface Props {
+  slotType: 'top' | 'sidebar' | 'bottom';
+  className?: string;
+}
+
+const { slotType, className = '' } = Astro.props;
+
+const dimensions = {
+  top: 'min-h-[90px] max-w-4xl w-full',
+  sidebar: 'min-h-[250px] w-full max-w-[300px]',
+  bottom: 'min-h-[100px] max-w-4xl w-full',
+}[slotType];
+
+const labels = {
+  top: 'Leaderboard Ad (728x90 / Responsive)',
+  sidebar: 'Medium Rectangle Ad (300x250 / 300x600)',
+  bottom: 'Bottom Banner Ad (Responsive)',
+}[slotType];
+---
+
+<div class={`relative my-4 flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-100/60 p-4 text-center transition-colors dark:border-slate-800 dark:bg-slate-900/40 ${dimensions} ${className}`} data-ad-slot={slotType}>
+  <div class="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-slate-400 dark:text-slate-500">
+    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+      <path d="M3 9h18"></path>
+    </svg>
+    <span>Advertisement</span>
+  </div>
+  <p class="mt-1 text-xs text-slate-400/80 dark:text-slate-600">
+    {labels}
+  </p>
+  <!-- Replace this container with Google AdSense ins tag when ready -->
+</div>

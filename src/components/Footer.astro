@@ -1,0 +1,75 @@
+---
+// Footer.astro
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-auto border-t border-slate-200/80 bg-white py-12 text-slate-600 transition-colors dark:border-slate-800/80 dark:bg-slate-950 dark:text-slate-400">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <!-- Col 1: Brand & Privacy note -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2">
+          <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600 text-white shadow-xs">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="5" height="5" x="3" y="3" rx="1"></rect>
+              <rect width="5" height="5" x="16" y="3" rx="1"></rect>
+              <rect width="5" height="5" x="3" y="16" rx="1"></rect>
+              <path d="M21 16h-3a2 2 0 0 0-2 2v3"></path>
+              <path d="M12 7v3a2 2 0 0 1-2 2H7"></path>
+            </svg>
+          </div>
+          <span class="text-base font-bold text-slate-900 dark:text-white">MyQRCodeFree</span>
+        </div>
+        <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+          Fast, clean, and zero-tracking QR code generator. Built with modern web standards to provide instant vector & raster QR codes for personal and commercial use.
+        </p>
+        <div class="flex items-center gap-2 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+          <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Client-side only: 100% private, no tracking
+        </div>
+      </div>
+
+      <!-- Col 2: Supported Formats -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Supported Types</h3>
+        <ul class="mt-3 space-y-2 text-xs text-slate-500 dark:text-slate-400">
+          <li class="flex items-center gap-1.5">
+            <span class="text-blue-500">✓</span> Website & Web Links (HTTP/HTTPS)
+          </li>
+          <li class="flex items-center gap-1.5">
+            <span class="text-blue-500">✓</span> Plain text messages & notes
+          </li>
+          <li class="flex items-center gap-1.5">
+            <span class="text-blue-500">✓</span> WiFi network auto-connect configuration
+          </li>
+          <li class="flex items-center gap-1.5">
+            <span class="text-blue-500">✓</span> vCard 3.0 digital business cards
+          </li>
+          <li class="flex items-center gap-1.5">
+            <span class="text-blue-500">✓</span> Geographic Coordinates (geo: URI)
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Export & Legal -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Export & Utilities</h3>
+        <p class="mt-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+          Export as high-resolution PNG (up to 1200px) or scalable SVG vectors suitable for print, billboards, business cards, and packaging.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-400 dark:text-slate-500">
+          <span>Free for commercial use</span>
+          <span>•</span>
+          <span>No sign-up required</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 border-t border-slate-200/80 pt-6 text-center text-xs text-slate-500 dark:border-slate-800/80 dark:text-slate-500 sm:flex sm:items-center sm:justify-between">
+      <p>© {year} MyQRCodeFree. All rights reserved.</p>
+      <div class="mt-3 sm:mt-0 flex justify-center gap-4 text-xs">
+        <span class="text-slate-400 dark:text-slate-600">Lightweight Static Micro-Tool</span>
+      </div>
+    </div>
+  </div>
+</footer>

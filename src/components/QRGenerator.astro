@@ -1,0 +1,1436 @@
+---
+import AdPlaceholder from './AdPlaceholder.astro';
+---
+
+<div id="generator" class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+  <!-- Top Ad Placeholder -->
+  <div class="flex justify-center">
+    <AdPlaceholder slotType="top" className="w-full" />
+  </div>
+
+  <!-- Hero Header -->
+  <div class="my-6 text-center">
+    <div class="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/70 px-3 py-1 text-xs font-semibold text-blue-700 shadow-xs dark:border-blue-900/50 dark:bg-blue-950/40 dark:text-blue-300">
+      <span class="flex h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-ping"></span>
+      Instant Client-Side QR Generator • No Limits
+    </div>
+    <h1 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl dark:text-white">
+      Free QR Code Generator
+    </h1>
+    <p class="mx-auto mt-3 max-w-2xl text-base text-slate-600 sm:text-lg dark:text-slate-400">
+      Create customizable QR codes for links, Wi-Fi networks, contacts, text, and GPS locations with custom colors and logo overlay.
+    </p>
+  </div>
+
+  <!-- Main Generator Grid: Inputs (Left) & Sticky Preview (Right) & Sidebar Ad -->
+  <div class="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-12 items-start">
+    
+    <!-- LEFT COLUMN: Generator Controls (7 cols) -->
+    <div class="space-y-6 lg:col-span-7">
+      
+      <!-- Type Selector Tabs -->
+      <div class="rounded-2xl border border-slate-200 bg-white p-2 shadow-xs transition-colors dark:border-slate-800 dark:bg-slate-900">
+        <div class="grid grid-cols-3 gap-1.5 sm:grid-cols-5" role="tablist" aria-label="QR Code Type">
+          <button
+            type="button"
+            class="tab-btn active inline-flex flex-col sm:flex-row items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-150"
+            data-tab="url"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-url"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>URL</span>
+          </button>
+
+          <button
+            type="button"
+            class="tab-btn inline-flex flex-col sm:flex-row items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-150"
+            data-tab="text"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-text"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>Text</span>
+          </button>
+
+          <button
+            type="button"
+            class="tab-btn inline-flex flex-col sm:flex-row items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-150"
+            data-tab="wifi"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-wifi"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+              <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+              <line x1="12" y1="20" x2="12.01" y2="20"></line>
+            </svg>
+            <span>WiFi</span>
+          </button>
+
+          <button
+            type="button"
+            class="tab-btn inline-flex flex-col sm:flex-row items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-150"
+            data-tab="vcard"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-vcard"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>vCard</span>
+          </button>
+
+          <button
+            type="button"
+            class="tab-btn inline-flex flex-col sm:flex-row items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-150"
+            data-tab="location"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-location"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Location</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Content Panels -->
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs transition-colors dark:border-slate-800 dark:bg-slate-900">
+        
+        <!-- URL Panel -->
+        <div id="panel-url" class="tab-panel space-y-4">
+          <div>
+            <label for="input-url" class="block text-sm font-semibold text-slate-800 dark:text-slate-200">
+              Website URL
+            </label>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              Enter any web page, link, social profile, or document link.
+            </p>
+            <div class="relative mt-2">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400 dark:text-slate-500">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </div>
+              <input
+                type="url"
+                id="input-url"
+                class="w-full rounded-xl border border-slate-300 bg-slate-50/50 py-2.5 pl-10 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="https://example.com"
+                value="https://myqrcodefree.com"
+              />
+            </div>
+          </div>
+          <!-- Quick protocol prefixes -->
+          <div class="flex flex-wrap items-center gap-2 pt-1 text-xs text-slate-500 dark:text-slate-400">
+            <span>Quick prefix:</span>
+            <button type="button" class="prefix-btn rounded-md border border-slate-200 bg-slate-100 px-2 py-1 font-mono text-[11px] hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700" data-prefix="https://">https://</button>
+            <button type="button" class="prefix-btn rounded-md border border-slate-200 bg-slate-100 px-2 py-1 font-mono text-[11px] hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700" data-prefix="http://">http://</button>
+            <button type="button" class="prefix-btn rounded-md border border-slate-200 bg-slate-100 px-2 py-1 font-mono text-[11px] hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700" data-prefix="mailto:">mailto:</button>
+            <button type="button" class="prefix-btn rounded-md border border-slate-200 bg-slate-100 px-2 py-1 font-mono text-[11px] hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700" data-prefix="tel:">tel:</button>
+          </div>
+        </div>
+
+        <!-- Text Panel -->
+        <div id="panel-text" class="tab-panel hidden space-y-4">
+          <div>
+            <div class="flex items-center justify-between">
+              <label for="input-text" class="block text-sm font-semibold text-slate-800 dark:text-slate-200">
+                Plain Text Message
+              </label>
+              <span id="text-counter" class="text-xs text-slate-400">0 characters</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              Enter any plain text, notes, instructions, or promo codes.
+            </p>
+            <textarea
+              id="input-text"
+              rows="4"
+              class="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50/50 p-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+              placeholder="Type or paste any text here..."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- WiFi Panel -->
+        <div id="panel-wifi" class="tab-panel hidden space-y-4">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label for="wifi-ssid" class="block text-sm font-semibold text-slate-800 dark:text-slate-200">
+                Network Name (SSID) *
+              </label>
+              <input
+                type="text"
+                id="wifi-ssid"
+                class="mt-1.5 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="e.g. Guest-WiFi"
+              />
+            </div>
+
+            <div>
+              <label for="wifi-encryption" class="block text-sm font-semibold text-slate-800 dark:text-slate-200">
+                Security / Encryption
+              </label>
+              <select
+                id="wifi-encryption"
+                class="mt-1.5 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+              >
+                <option value="WPA" selected>WPA / WPA2 / WPA3 (Standard)</option>
+                <option value="WEP">WEP (Older)</option>
+                <option value="nopass">No Password (Open Network)</option>
+              </select>
+            </div>
+
+            <div id="wifi-pass-container">
+              <div class="flex items-center justify-between">
+                <label for="wifi-password" class="block text-sm font-semibold text-slate-800 dark:text-slate-200">
+                  Password
+                </label>
+                <button type="button" id="wifi-toggle-pass" class="text-xs text-blue-600 dark:text-blue-400 hover:underline">
+                  Show
+                </button>
+              </div>
+              <input
+                type="password"
+                id="wifi-password"
+                class="mt-1.5 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="Wi-Fi password"
+              />
+            </div>
+
+            <div class="sm:col-span-2">
+              <label class="inline-flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  id="wifi-hidden"
+                  class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-800"
+                />
+                <span class="text-xs font-medium text-slate-700 dark:text-slate-300">
+                  Hidden network (SSID is not broadcast)
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- vCard Panel -->
+        <div id="panel-vcard" class="tab-panel hidden space-y-4">
+          <div class="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+            <div>
+              <label for="vcard-fn" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                First Name *
+              </label>
+              <input
+                type="text"
+                id="vcard-fn"
+                class="mt-1 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="John"
+              />
+            </div>
+            <div>
+              <label for="vcard-ln" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                Last Name
+              </label>
+              <input
+                type="text"
+                id="vcard-ln"
+                class="mt-1 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="Doe"
+              />
+            </div>
+            <div>
+              <label for="vcard-tel" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="vcard-tel"
+                class="mt-1 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="+1 (555) 000-0000"
+              />
+            </div>
+            <div>
+              <label for="vcard-email" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="vcard-email"
+                class="mt-1 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="john@example.com"
+              />
+            </div>
+            <div>
+              <label for="vcard-org" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                Company / Organization
+              </label>
+              <input
+                type="text"
+                id="vcard-org"
+                class="mt-1 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="Acme Corp"
+              />
+            </div>
+            <div>
+              <label for="vcard-title" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                Job Title
+              </label>
+              <input
+                type="text"
+                id="vcard-title"
+                class="mt-1 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="Product Designer"
+              />
+            </div>
+            <div class="sm:col-span-2">
+              <label for="vcard-url" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                Website
+              </label>
+              <input
+                type="url"
+                id="vcard-url"
+                class="mt-1 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="https://johndoe.com"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Location Panel -->
+        <div id="panel-location" class="tab-panel hidden space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-sm font-semibold text-slate-800 dark:text-slate-200">
+                Geographic Coordinates
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">
+                Generates a standard <code class="rounded bg-slate-100 px-1 py-0.5 text-blue-600 dark:bg-slate-800 dark:text-blue-400">geo:</code> URI QR code recognized by phone navigation apps.
+              </p>
+            </div>
+            <button
+              type="button"
+              id="geo-locate-btn"
+              class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-2xs hover:bg-slate-100 focus:outline-hidden dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+            >
+              <svg class="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="22" y1="12" x2="18" y2="12"></line>
+                <line x1="6" y1="12" x2="2" y2="12"></line>
+                <line x1="12" y1="6" x2="12" y2="2"></line>
+                <line x1="12" y1="22" x2="12" y2="18"></line>
+              </svg>
+              <span>Current GPS</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label for="geo-lat" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                Latitude (-90 to 90) *
+              </label>
+              <input
+                type="number"
+                id="geo-lat"
+                step="any"
+                min="-90"
+                max="90"
+                class="mt-1.5 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="e.g. 37.774929"
+                value="37.7749"
+              />
+            </div>
+            <div>
+              <label for="geo-lng" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                Longitude (-180 to 180) *
+              </label>
+              <input
+                type="number"
+                id="geo-lng"
+                step="any"
+                min="-180"
+                max="180"
+                class="mt-1.5 w-full rounded-xl border border-slate-300 bg-slate-50/50 px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-800/50 dark:text-white dark:focus:bg-slate-900"
+                placeholder="e.g. -122.419416"
+                value="-122.4194"
+              />
+            </div>
+          </div>
+
+          <!-- Quick Location Presets -->
+          <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs text-slate-500 dark:text-slate-400">
+            <span>City presets:</span>
+            <button type="button" class="geo-preset rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 text-[11px] hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700" data-lat="40.7128" data-lng="-74.0060">New York</button>
+            <button type="button" class="geo-preset rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 text-[11px] hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700" data-lat="51.5074" data-lng="-0.1278">London</button>
+            <button type="button" class="geo-preset rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 text-[11px] hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700" data-lat="35.6762" data-lng="139.6503">Tokyo</button>
+            <button type="button" class="geo-preset rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 text-[11px] hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700" data-lat="48.8566" data-lng="2.3522">Paris</button>
+            <button type="button" class="geo-preset rounded-md border border-slate-200 bg-slate-100 px-2 py-0.5 text-[11px] hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700" data-lat="37.7749" data-lng="-122.4194">San Francisco</button>
+          </div>
+
+          <!-- Live geo URI preview badge -->
+          <div class="rounded-xl border border-slate-200/80 bg-slate-50/70 p-3 text-xs dark:border-slate-800 dark:bg-slate-800/40">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-slate-600 dark:text-slate-300" id="geo-preview-text">geo:37.7749,-122.4194</span>
+              <a id="geo-maps-link" href="https://maps.google.com/?q=37.7749,-122.4194" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">
+                Open in Maps ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customization Accordion / Controls -->
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs transition-colors dark:border-slate-800 dark:bg-slate-900 space-y-6">
+        <h2 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <svg class="h-4 w-4 text-blue-600 dark:text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"></path>
+            <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
+            <path d="M12 2v2"></path>
+            <path d="M12 22v-2"></path>
+            <path d="m17 7-1.4 1.4"></path>
+            <path d="m8.4 15.6-1.4 1.4"></path>
+            <path d="M22 12h-2"></path>
+            <path d="M4 12H2"></path>
+            <path d="m17 17-1.4-1.4"></path>
+            <path d="m8.4 8.4-1.4-1.4"></path>
+          </svg>
+          Customization & Design
+        </h2>
+
+        <!-- Colors Section -->
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+            Colors
+          </label>
+          <div class="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <!-- Foreground Color -->
+            <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-3 dark:border-slate-800 dark:bg-slate-800/40">
+              <span class="text-xs font-medium text-slate-700 dark:text-slate-300">Foreground Color (Dots)</span>
+              <div class="mt-2 flex items-center gap-2">
+                <input
+                  type="color"
+                  id="color-fg"
+                  value="#000000"
+                  class="h-9 w-10 cursor-pointer rounded-lg border border-slate-300 bg-white p-0.5 dark:border-slate-700 dark:bg-slate-800"
+                />
+                <input
+                  type="text"
+                  id="color-fg-hex"
+                  value="#000000"
+                  class="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 font-mono text-xs text-slate-900 focus:border-blue-500 focus:outline-hidden dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  maxlength="7"
+                />
+              </div>
+            </div>
+
+            <!-- Background Color -->
+            <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-3 dark:border-slate-800 dark:bg-slate-800/40">
+              <span class="text-xs font-medium text-slate-700 dark:text-slate-300">Background Color</span>
+              <div class="mt-2 flex items-center gap-2">
+                <input
+                  type="color"
+                  id="color-bg"
+                  value="#ffffff"
+                  class="h-9 w-10 cursor-pointer rounded-lg border border-slate-300 bg-white p-0.5 dark:border-slate-700 dark:bg-slate-800"
+                />
+                <input
+                  type="text"
+                  id="color-bg-hex"
+                  value="#ffffff"
+                  class="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 font-mono text-xs text-slate-900 focus:border-blue-500 focus:outline-hidden dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  maxlength="7"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Color Presets -->
+          <div class="mt-3 flex flex-wrap items-center gap-2">
+            <span class="text-xs text-slate-400">Presets:</span>
+            <button type="button" class="color-preset flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs text-slate-700 hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300" data-fg="#000000" data-bg="#ffffff">
+              <span class="h-3 w-3 rounded-full border border-slate-300" style="background: linear-gradient(135deg, #000 50%, #fff 50%)"></span>
+              Classic
+            </button>
+            <button type="button" class="color-preset flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs text-slate-700 hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300" data-fg="#1e40af" data-bg="#ffffff">
+              <span class="h-3 w-3 rounded-full border border-slate-300" style="background: linear-gradient(135deg, #1e40af 50%, #fff 50%)"></span>
+              Royal Blue
+            </button>
+            <button type="button" class="color-preset flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs text-slate-700 hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300" data-fg="#065f46" data-bg="#ffffff">
+              <span class="h-3 w-3 rounded-full border border-slate-300" style="background: linear-gradient(135deg, #065f46 50%, #fff 50%)"></span>
+              Emerald
+            </button>
+            <button type="button" class="color-preset flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs text-slate-700 hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300" data-fg="#581c87" data-bg="#faf5ff">
+              <span class="h-3 w-3 rounded-full border border-slate-300" style="background: linear-gradient(135deg, #581c87 50%, #faf5ff 50%)"></span>
+              Violet
+            </button>
+            <button type="button" class="color-preset flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2 py-1 text-xs text-slate-700 hover:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300" data-fg="#ffffff" data-bg="#0f172a">
+              <span class="h-3 w-3 rounded-full border border-slate-300" style="background: linear-gradient(135deg, #fff 50%, #0f172a 50%)"></span>
+              Inverted
+            </button>
+          </div>
+
+          <!-- Contrast Warning -->
+          <div id="contrast-warning" class="mt-2.5 hidden rounded-lg border border-amber-300 bg-amber-50 p-2.5 text-xs text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/40 dark:text-amber-300">
+            ⚠️ <strong>Low contrast detected!</strong> Light foreground on light background (or dark on dark) may prevent scanners and phone cameras from reading the QR code.
+          </div>
+        </div>
+
+        <div class="h-[1px] bg-slate-100 dark:bg-slate-800"></div>
+
+        <!-- Error Correction Level -->
+        <div>
+          <div class="flex items-center justify-between">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+              Error Correction Level
+            </label>
+            <span class="text-xs text-slate-400" id="ecl-hint">Standard (15% redundancy)</span>
+          </div>
+          <div class="mt-2.5 grid grid-cols-4 gap-2">
+            <label class="ecl-card cursor-pointer rounded-xl border border-slate-200 p-2.5 text-center transition-all hover:border-blue-400 dark:border-slate-800">
+              <input type="radio" name="ecl" value="L" class="sr-only" />
+              <div class="text-sm font-bold text-slate-800 dark:text-slate-200">L</div>
+              <div class="text-[10px] text-slate-500">7% recovery</div>
+            </label>
+            <label class="ecl-card active cursor-pointer rounded-xl border border-blue-500 bg-blue-50/50 p-2.5 text-center transition-all dark:border-blue-500 dark:bg-blue-950/30">
+              <input type="radio" name="ecl" value="M" class="sr-only" checked />
+              <div class="text-sm font-bold text-blue-600 dark:text-blue-400">M</div>
+              <div class="text-[10px] text-blue-600/80 dark:text-blue-400/80">15% default</div>
+            </label>
+            <label class="ecl-card cursor-pointer rounded-xl border border-slate-200 p-2.5 text-center transition-all hover:border-blue-400 dark:border-slate-800">
+              <input type="radio" name="ecl" value="Q" class="sr-only" />
+              <div class="text-sm font-bold text-slate-800 dark:text-slate-200">Q</div>
+              <div class="text-[10px] text-slate-500">25% recovery</div>
+            </label>
+            <label class="ecl-card cursor-pointer rounded-xl border border-slate-200 p-2.5 text-center transition-all hover:border-blue-400 dark:border-slate-800">
+              <input type="radio" name="ecl" value="H" class="sr-only" />
+              <div class="text-sm font-bold text-slate-800 dark:text-slate-200">H</div>
+              <div class="text-[10px] text-slate-500">30% (Best logo)</div>
+            </label>
+          </div>
+        </div>
+
+        <div class="h-[1px] bg-slate-100 dark:bg-slate-800"></div>
+
+        <!-- Optional Logo Upload -->
+        <div>
+          <div class="flex items-center justify-between">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+              Center Logo Overlay (Optional)
+            </label>
+            <span class="text-xs text-slate-400">PNG, JPG, SVG, WebP</span>
+          </div>
+
+          <div class="mt-2.5">
+            <!-- Upload Box when no logo -->
+            <div id="logo-dropzone" class="relative flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-slate-50/50 p-5 text-center transition hover:border-blue-400 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800/30 dark:hover:border-blue-500">
+              <input type="file" id="logo-input" accept="image/*" class="absolute inset-0 cursor-pointer opacity-0" />
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </div>
+              <p class="mt-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                Click to upload logo or drag and drop
+              </p>
+              <p class="text-[11px] text-slate-400">
+                Recommended: Square image with clear background
+              </p>
+            </div>
+
+            <!-- Active Logo controls (hidden by default) -->
+            <div id="logo-active-container" class="hidden rounded-xl border border-slate-200 bg-slate-50/70 p-3.5 dark:border-slate-800 dark:bg-slate-800/40">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="h-12 w-12 rounded-lg border border-slate-200 bg-white p-1 shadow-2xs dark:border-slate-700 dark:bg-slate-900 flex items-center justify-center overflow-hidden">
+                    <img id="logo-preview-thumb" src="" alt="Logo preview" class="max-h-full max-w-full object-contain" />
+                  </div>
+                  <div>
+                    <span id="logo-file-name" class="block max-w-[180px] truncate text-xs font-semibold text-slate-800 dark:text-slate-200">logo.png</span>
+                    <span class="text-[10px] text-emerald-600 dark:text-emerald-400">✓ Overlaid on center</span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  id="logo-remove-btn"
+                  class="rounded-lg border border-red-200 bg-red-50 px-2.5 py-1 text-xs font-medium text-red-600 hover:bg-red-100 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-400"
+                >
+                  Remove
+                </button>
+              </div>
+
+              <!-- Logo size slider -->
+              <div class="mt-3.5 pt-3 border-t border-slate-200 dark:border-slate-700/60">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-medium text-slate-700 dark:text-slate-300">Logo Size</span>
+                  <span id="logo-size-val" class="font-mono text-slate-500">22%</span>
+                </div>
+                <input
+                  type="range"
+                  id="logo-size-range"
+                  min="14"
+                  max="30"
+                  value="22"
+                  class="mt-1.5 w-full cursor-pointer accent-blue-600"
+                />
+              </div>
+
+              <!-- Logo background badge toggle -->
+              <div class="mt-2.5 flex items-center justify-between text-xs">
+                <span class="text-slate-700 dark:text-slate-300">Background protection circle</span>
+                <input
+                  type="checkbox"
+                  id="logo-bg-badge"
+                  checked
+                  class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-800"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Sticky QR Code Preview & Action Buttons (5 cols) -->
+    <div class="space-y-6 lg:col-span-5 lg:sticky lg:top-20">
+      
+      <!-- Preview Card -->
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900">
+        
+        <div class="flex items-center justify-between">
+          <h2 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <span class="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Live Preview
+          </h2>
+          <span id="qr-status-badge" class="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20 dark:bg-emerald-950/40 dark:text-emerald-400">
+            Ready to scan
+          </span>
+        </div>
+
+        <!-- Canvas Container -->
+        <div class="mt-5 flex flex-col items-center justify-center">
+          <div id="qr-wrapper" class="relative flex items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 shadow-inner dark:border-slate-800 dark:bg-slate-950">
+            <!-- Canvas is populated dynamically by client-side QRCode.toCanvas -->
+            <canvas id="qr-canvas" class="max-w-full h-auto rounded-lg transition-transform duration-200" width="300" height="300"></canvas>
+            
+            <!-- Hidden container for SVG generation -->
+            <div id="qr-svg-cache" class="hidden"></div>
+          </div>
+
+          <!-- Raw Encoded payload toggle/preview -->
+          <div class="mt-4 w-full">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500">
+              <span>Encoded Payload Preview</span>
+              <span id="payload-length">23 chars</span>
+            </div>
+            <div class="mt-1 max-h-16 overflow-y-auto rounded-lg border border-slate-200 bg-slate-50 p-2 font-mono text-[11px] text-slate-600 break-all dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400" id="payload-display">
+              https://myqrcodefree.com
+            </div>
+          </div>
+        </div>
+
+        <!-- Download Buttons -->
+        <div class="mt-6 space-y-2.5">
+          <div class="grid grid-cols-2 gap-2.5">
+            <!-- PNG Download -->
+            <button
+              type="button"
+              id="download-png-btn"
+              class="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white shadow-md shadow-blue-500/20 transition-all hover:bg-blue-700 active:scale-95 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+            >
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download PNG</span>
+            </button>
+
+            <!-- SVG Download -->
+            <button
+              type="button"
+              id="download-svg-btn"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-bold text-slate-700 shadow-xs transition-all hover:bg-slate-50 active:scale-95 focus:outline-hidden focus:ring-2 focus:ring-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+            >
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <span>Download SVG</span>
+            </button>
+          </div>
+
+          <!-- Quick Copy PNG to Clipboard Button -->
+          <button
+            type="button"
+            id="copy-image-btn"
+            class="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-800 dark:bg-slate-800/60 dark:text-slate-300 dark:hover:bg-slate-800"
+          >
+            <svg id="copy-icon" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+            </svg>
+            <span id="copy-text">Copy Image to Clipboard</span>
+          </button>
+        </div>
+
+        <div class="mt-4 flex items-center justify-center gap-4 text-[11px] text-slate-400 dark:text-slate-500">
+          <span>✓ High Res (1200px)</span>
+          <span>•</span>
+          <span>✓ Crisp Vector SVG</span>
+          <span>•</span>
+          <span>✓ No Watermark</span>
+        </div>
+      </div>
+
+      <!-- Sidebar Ad Placeholder -->
+      <div class="flex justify-center">
+        <AdPlaceholder slotType="sidebar" className="w-full" />
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom Ad Placeholder -->
+  <div class="mt-12 flex justify-center">
+    <AdPlaceholder slotType="bottom" className="w-full" />
+  </div>
+</div>
+
+<style>
+  /* Active tab button styling */
+  .tab-btn.active {
+    background-color: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+  }
+  .tab-btn:not(.active) {
+    color: #64748b;
+  }
+  :global(.dark) .tab-btn:not(.active) {
+    color: #94a3b8;
+  }
+  .tab-btn:not(.active):hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+  }
+  :global(.dark) .tab-btn:not(.active):hover {
+    background-color: #1e293b;
+    color: #f8fafc;
+  }
+</style>
+
+<script>
+  import QRCode from 'qrcode';
+
+  function initQRGenerator() {
+    // State
+    let currentTab = 'url';
+    let currentLogoImg: HTMLImageElement | null = null;
+    let currentLogoDataUrl = '';
+    let currentLogoName = '';
+
+    // Elements
+    const tabButtons = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+    const tabPanels = document.querySelectorAll<HTMLElement>('.tab-panel');
+    const qrCanvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
+    const payloadDisplay = document.getElementById('payload-display') as HTMLElement;
+    const payloadLength = document.getElementById('payload-length') as HTMLElement;
+    const qrStatusBadge = document.getElementById('qr-status-badge') as HTMLElement;
+
+    // Inputs: URL
+    const inputUrl = document.getElementById('input-url') as HTMLInputElement;
+    const prefixBtns = document.querySelectorAll<HTMLButtonElement>('.prefix-btn');
+
+    // Inputs: Text
+    const inputText = document.getElementById('input-text') as HTMLTextAreaElement;
+    const textCounter = document.getElementById('text-counter') as HTMLElement;
+
+    // Inputs: WiFi
+    const wifiSsid = document.getElementById('wifi-ssid') as HTMLInputElement;
+    const wifiEncryption = document.getElementById('wifi-encryption') as HTMLSelectElement;
+    const wifiPassword = document.getElementById('wifi-password') as HTMLInputElement;
+    const wifiHidden = document.getElementById('wifi-hidden') as HTMLInputElement;
+    const wifiTogglePass = document.getElementById('wifi-toggle-pass') as HTMLButtonElement;
+    const wifiPassContainer = document.getElementById('wifi-pass-container') as HTMLElement;
+
+    // Inputs: vCard
+    const vcardFn = document.getElementById('vcard-fn') as HTMLInputElement;
+    const vcardLn = document.getElementById('vcard-ln') as HTMLInputElement;
+    const vcardTel = document.getElementById('vcard-tel') as HTMLInputElement;
+    const vcardEmail = document.getElementById('vcard-email') as HTMLInputElement;
+    const vcardOrg = document.getElementById('vcard-org') as HTMLInputElement;
+    const vcardTitle = document.getElementById('vcard-title') as HTMLInputElement;
+    const vcardUrl = document.getElementById('vcard-url') as HTMLInputElement;
+
+    // Inputs: Location
+    const geoLat = document.getElementById('geo-lat') as HTMLInputElement;
+    const geoLng = document.getElementById('geo-lng') as HTMLInputElement;
+    const geoLocateBtn = document.getElementById('geo-locate-btn') as HTMLButtonElement;
+    const geoPresets = document.querySelectorAll<HTMLButtonElement>('.geo-preset');
+    const geoPreviewText = document.getElementById('geo-preview-text') as HTMLElement;
+    const geoMapsLink = document.getElementById('geo-maps-link') as HTMLAnchorElement;
+
+    // Customization: Colors
+    const colorFg = document.getElementById('color-fg') as HTMLInputElement;
+    const colorFgHex = document.getElementById('color-fg-hex') as HTMLInputElement;
+    const colorBg = document.getElementById('color-bg') as HTMLInputElement;
+    const colorBgHex = document.getElementById('color-bg-hex') as HTMLInputElement;
+    const colorPresets = document.querySelectorAll<HTMLButtonElement>('.color-preset');
+    const contrastWarning = document.getElementById('contrast-warning') as HTMLElement;
+
+    // Customization: ECL
+    const eclCards = document.querySelectorAll<HTMLElement>('.ecl-card');
+    const eclHint = document.getElementById('ecl-hint') as HTMLElement;
+
+    // Customization: Logo
+    const logoInput = document.getElementById('logo-input') as HTMLInputElement;
+    const logoDropzone = document.getElementById('logo-dropzone') as HTMLElement;
+    const logoActiveContainer = document.getElementById('logo-active-container') as HTMLElement;
+    const logoPreviewThumb = document.getElementById('logo-preview-thumb') as HTMLImageElement;
+    const logoFileName = document.getElementById('logo-file-name') as HTMLElement;
+    const logoRemoveBtn = document.getElementById('logo-remove-btn') as HTMLButtonElement;
+    const logoSizeRange = document.getElementById('logo-size-range') as HTMLInputElement;
+    const logoSizeVal = document.getElementById('logo-size-val') as HTMLElement;
+    const logoBgBadge = document.getElementById('logo-bg-badge') as HTMLInputElement;
+
+    // Actions
+    const downloadPngBtn = document.getElementById('download-png-btn') as HTMLButtonElement;
+    const downloadSvgBtn = document.getElementById('download-svg-btn') as HTMLButtonElement;
+    const copyImageBtn = document.getElementById('copy-image-btn') as HTMLButtonElement;
+    const copyIcon = document.getElementById('copy-icon') as HTMLElement;
+    const copyText = document.getElementById('copy-text') as HTMLElement;
+
+    // Helper: Escape WiFi Special Characters (\ ; , : ")
+    function escapeWifi(str: string): string {
+      return str.replace(/([\\;,:"'])/g, '\\$1');
+    }
+
+    // Calculate Payload based on Active Tab
+    function getPayload(): string {
+      switch (currentTab) {
+        case 'url': {
+          let url = (inputUrl?.value || '').trim();
+          if (!url) return 'https://myqrcodefree.com';
+          // If user didn't type a scheme and it looks like a domain, prepend https://
+          if (!/^https?:\/\//i.test(url) && !url.includes(':')) {
+            url = 'https://' + url;
+          }
+          return url;
+        }
+
+        case 'text': {
+          const text = inputText?.value || '';
+          return text.trim() ? text : 'Free QR Code Generator';
+        }
+
+        case 'wifi': {
+          const ssid = (wifiSsid?.value || '').trim();
+          const auth = wifiEncryption?.value || 'WPA';
+          const pass = wifiPassword?.value || '';
+          const hidden = wifiHidden?.checked || false;
+
+          if (!ssid) return 'WIFI:S:MyWiFi;T:WPA;P:password;;';
+
+          // Format: WIFI:T:WPA;S:MySSID;P:MyPassword;H:false;;
+          let wifiStr = `WIFI:T:${auth};S:${escapeWifi(ssid)};`;
+          if (auth !== 'nopass' && pass) {
+            wifiStr += `P:${escapeWifi(pass)};`;
+          }
+          if (hidden) {
+            wifiStr += `H:true;`;
+          }
+          wifiStr += ';';
+          return wifiStr;
+        }
+
+        case 'vcard': {
+          const fn = (vcardFn?.value || '').trim();
+          const ln = (vcardLn?.value || '').trim();
+          const tel = (vcardTel?.value || '').trim();
+          const email = (vcardEmail?.value || '').trim();
+          const org = (vcardOrg?.value || '').trim();
+          const title = (vcardTitle?.value || '').trim();
+          const url = (vcardUrl?.value || '').trim();
+
+          const fullName = [fn, ln].filter(Boolean).join(' ') || 'John Doe';
+
+          let vcard = 'BEGIN:VCARD\nVERSION:3.0\n';
+          vcard += `N:${ln};${fn};;;\n`;
+          vcard += `FN:${fullName}\n`;
+          if (org) vcard += `ORG:${org}\n`;
+          if (title) vcard += `TITLE:${title}\n`;
+          if (tel) vcard += `TEL;TYPE=CELL:${tel}\n`;
+          if (email) vcard += `EMAIL:${email}\n`;
+          if (url) vcard += `URL:${url}\n`;
+          vcard += 'END:VCARD';
+          return vcard;
+        }
+
+        case 'location': {
+          let lat = parseFloat(geoLat?.value || '0');
+          let lng = parseFloat(geoLng?.value || '0');
+          if (isNaN(lat)) lat = 37.7749;
+          if (isNaN(lng)) lng = -122.4194;
+
+          // Update geo display & map link
+          const geoStr = `geo:${lat},${lng}`;
+          if (geoPreviewText) geoPreviewText.textContent = geoStr;
+          if (geoMapsLink) geoMapsLink.href = `https://maps.google.com/?q=${lat},${lng}`;
+
+          return geoStr;
+        }
+
+        default:
+          return 'https://myqrcodefree.com';
+      }
+    }
+
+    // Get selected Error Correction Level
+    function getECL(): 'L' | 'M' | 'Q' | 'H' {
+      const selected = document.querySelector<HTMLInputElement>('input[name="ecl"]:checked');
+      return (selected?.value as 'L' | 'M' | 'Q' | 'H') || 'M';
+    }
+
+    // Check contrast between two hex colors
+    function checkContrast(hex1: string, hex2: string) {
+      function getLuminance(hex: string) {
+        const clean = hex.replace('#', '');
+        const r = parseInt(clean.substring(0, 2), 16) / 255;
+        const g = parseInt(clean.substring(2, 4), 16) / 255;
+        const b = parseInt(clean.substring(4, 6), 16) / 255;
+        const a = [r, g, b].map((v) => (v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)));
+        return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+      }
+      try {
+        const l1 = getLuminance(hex1);
+        const l2 = getLuminance(hex2);
+        const ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+        if (ratio < 2.5) {
+          contrastWarning?.classList.remove('hidden');
+        } else {
+          contrastWarning?.classList.add('hidden');
+        }
+      } catch (_) {
+        contrastWarning?.classList.add('hidden');
+      }
+    }
+
+    // Draw logo overlay onto canvas
+    function drawLogoOnCanvas(canvas: HTMLCanvasElement, img: HTMLImageElement, sizePercent: number, bgBadge: boolean, bgColor: string) {
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const size = canvas.width * (sizePercent / 100);
+      const x = (canvas.width - size) / 2;
+      const y = (canvas.height - size) / 2;
+
+      const drawRounded = (bx: number, by: number, bw: number, bh: number, br: number) => {
+        if (typeof (ctx as any).roundRect === 'function') {
+          (ctx as any).roundRect(bx, by, bw, bh, br);
+        } else {
+          ctx.rect(bx, by, bw, bh);
+        }
+      };
+
+      if (bgBadge) {
+        const padding = size * 0.12;
+        const badgeSize = size + padding * 2;
+        const badgeX = x - padding;
+        const badgeY = y - padding;
+        const radius = badgeSize * 0.18;
+
+        ctx.save();
+        ctx.fillStyle = bgColor || '#ffffff';
+        ctx.beginPath();
+        drawRounded(badgeX, badgeY, badgeSize, badgeSize, radius);
+        ctx.fill();
+        // Subtle outline for definition
+        ctx.strokeStyle = 'rgba(0,0,0,0.06)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      ctx.save();
+      // Clip rounded corners for logo
+      const logoRadius = size * 0.12;
+      ctx.beginPath();
+      drawRounded(x, y, size, size, logoRadius);
+      ctx.clip();
+      ctx.drawImage(img, x, y, size, size);
+      ctx.restore();
+    }
+
+    // Render QR Code (Live update)
+    let renderDebounceTimer: number | undefined;
+    function renderQRCode() {
+      clearTimeout(renderDebounceTimer);
+      renderDebounceTimer = window.setTimeout(async () => {
+        try {
+          const payload = getPayload();
+          const ecl = getECL();
+          const fg = colorFg?.value || '#000000';
+          const bg = colorBg?.value || '#ffffff';
+          const logoSize = parseInt(logoSizeRange?.value || '22', 10);
+          const bgBadge = logoBgBadge?.checked ?? true;
+
+          // Update payload indicator
+          if (payloadDisplay) payloadDisplay.textContent = payload;
+          if (payloadLength) payloadLength.textContent = `${payload.length} chars`;
+
+          checkContrast(fg, bg);
+
+          // Render onto preview canvas
+          const previewSize = 300;
+          await QRCode.toCanvas(qrCanvas, payload, {
+            width: previewSize,
+            margin: 2,
+            errorCorrectionLevel: ecl,
+            color: {
+              dark: fg,
+              light: bg,
+            },
+          });
+
+          // Draw logo if uploaded
+          if (currentLogoImg) {
+            drawLogoOnCanvas(qrCanvas, currentLogoImg, logoSize, bgBadge, bg);
+          }
+
+          if (qrStatusBadge) {
+            qrStatusBadge.textContent = 'Ready to scan';
+            qrStatusBadge.className = 'rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-600/20 dark:bg-emerald-950/40 dark:text-emerald-400';
+          }
+        } catch (err: any) {
+          console.error('QR Code render error:', err);
+          if (qrStatusBadge) {
+            qrStatusBadge.textContent = 'Data too long for chosen level';
+            qrStatusBadge.className = 'rounded-full bg-red-50 px-2.5 py-0.5 text-[11px] font-semibold text-red-700 ring-1 ring-inset ring-red-600/20 dark:bg-red-950/40 dark:text-red-400';
+          }
+        }
+      }, 50);
+    }
+
+    // High-Resolution PNG Generator for Download
+    async function generateHighResCanvas(): Promise<HTMLCanvasElement> {
+      const payload = getPayload();
+      const ecl = getECL();
+      const fg = colorFg?.value || '#000000';
+      const bg = colorBg?.value || '#ffffff';
+      const logoSize = parseInt(logoSizeRange?.value || '22', 10);
+      const bgBadge = logoBgBadge?.checked ?? true;
+
+      const offscreen = document.createElement('canvas');
+      const targetSize = 1200; // Crisp high-res for print
+
+      await QRCode.toCanvas(offscreen, payload, {
+        width: targetSize,
+        margin: 2,
+        errorCorrectionLevel: ecl,
+        color: {
+          dark: fg,
+          light: bg,
+        },
+      });
+
+      if (currentLogoImg) {
+        drawLogoOnCanvas(offscreen, currentLogoImg, logoSize, bgBadge, bg);
+      }
+
+      return offscreen;
+    }
+
+    // Generate SVG string (including embedded logo if present)
+    async function generateSVGString(): Promise<string> {
+      const payload = getPayload();
+      const ecl = getECL();
+      const fg = colorFg?.value || '#000000';
+      const bg = colorBg?.value || '#ffffff';
+      const logoSize = parseInt(logoSizeRange?.value || '22', 10);
+      const bgBadge = logoBgBadge?.checked ?? true;
+
+      let svgString = await QRCode.toString(payload, {
+        type: 'svg',
+        margin: 2,
+        errorCorrectionLevel: ecl,
+        color: {
+          dark: fg,
+          light: bg,
+        },
+      });
+
+      // Embed logo if available
+      if (currentLogoDataUrl) {
+        // Extract viewBox or dimension from SVG
+        const viewBoxMatch = svgString.match(/viewBox="0 0 (\d+) (\d+)"/);
+        if (viewBoxMatch) {
+          const totalWidth = parseFloat(viewBoxMatch[1]);
+          const totalHeight = parseFloat(viewBoxMatch[2]);
+          const size = totalWidth * (logoSize / 100);
+          const x = (totalWidth - size) / 2;
+          const y = (totalHeight - size) / 2;
+          const padding = size * 0.12;
+          const badgeSize = size + padding * 2;
+          const badgeX = x - padding;
+          const badgeY = y - padding;
+          const radius = badgeSize * 0.18;
+
+          let overlay = '';
+          if (bgBadge) {
+            overlay += `<rect x="${badgeX.toFixed(2)}" y="${badgeY.toFixed(2)}" width="${badgeSize.toFixed(2)}" height="${badgeSize.toFixed(2)}" rx="${radius.toFixed(2)}" fill="${bg}" stroke="rgba(0,0,0,0.06)" stroke-width="0.5"/>`;
+          }
+          overlay += `<image href="${currentLogoDataUrl}" x="${x.toFixed(2)}" y="${y.toFixed(2)}" width="${size.toFixed(2)}" height="${size.toFixed(2)}" preserveAspectRatio="xMidYMid meet" clip-path="inset(0% round ${radius * 0.6}px)"/>`;
+
+          // Insert overlay before closing </svg>
+          svgString = svgString.replace('</svg>', `${overlay}</svg>`);
+        }
+      }
+
+      return svgString;
+    }
+
+    // --- TAB SWITCHING ---
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        if (!target) return;
+        currentTab = target;
+
+        tabButtons.forEach((b) => {
+          const isActive = b === btn;
+          b.classList.toggle('active', isActive);
+          b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        tabPanels.forEach((panel) => {
+          if (panel.id === `panel-${target}`) {
+            panel.classList.remove('hidden');
+          } else {
+            panel.classList.add('hidden');
+          }
+        });
+
+        renderQRCode();
+      });
+    });
+
+    // --- INPUT EVENT LISTENERS ---
+    // URL
+    inputUrl?.addEventListener('input', renderQRCode);
+    prefixBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const prefix = btn.dataset.prefix || '';
+        let current = inputUrl.value.trim();
+        // Replace existing common prefixes
+        current = current.replace(/^(https?:\/\/|mailto:|tel:)/i, '');
+        inputUrl.value = prefix + current;
+        inputUrl.focus();
+        renderQRCode();
+      });
+    });
+
+    // Text
+    inputText?.addEventListener('input', () => {
+      if (textCounter) {
+        textCounter.textContent = `${inputText.value.length} characters`;
+      }
+      renderQRCode();
+    });
+
+    // WiFi
+    wifiSsid?.addEventListener('input', renderQRCode);
+    wifiPassword?.addEventListener('input', renderQRCode);
+    wifiHidden?.addEventListener('change', renderQRCode);
+    wifiEncryption?.addEventListener('change', () => {
+      const isNone = wifiEncryption.value === 'nopass';
+      if (wifiPassContainer) {
+        wifiPassContainer.style.display = isNone ? 'none' : 'block';
+      }
+      renderQRCode();
+    });
+    wifiTogglePass?.addEventListener('click', () => {
+      const isPass = wifiPassword.type === 'password';
+      wifiPassword.type = isPass ? 'text' : 'password';
+      wifiTogglePass.textContent = isPass ? 'Hide' : 'Show';
+    });
+
+    // vCard
+    [vcardFn, vcardLn, vcardTel, vcardEmail, vcardOrg, vcardTitle, vcardUrl].forEach((inp) => {
+      inp?.addEventListener('input', renderQRCode);
+    });
+
+    // Location
+    geoLat?.addEventListener('input', renderQRCode);
+    geoLng?.addEventListener('input', renderQRCode);
+
+    geoPresets.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const lat = btn.dataset.lat || '0';
+        const lng = btn.dataset.lng || '0';
+        if (geoLat) geoLat.value = lat;
+        if (geoLng) geoLng.value = lng;
+        renderQRCode();
+      });
+    });
+
+    geoLocateBtn?.addEventListener('click', () => {
+      if (!navigator.geolocation) {
+        alert('Geolocation is not supported by your browser.');
+        return;
+      }
+      geoLocateBtn.disabled = true;
+      const originalHtml = geoLocateBtn.innerHTML;
+      geoLocateBtn.innerHTML = `<span>Locating...</span>`;
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = pos.coords.latitude.toFixed(6);
+          const lng = pos.coords.longitude.toFixed(6);
+          if (geoLat) geoLat.value = lat;
+          if (geoLng) geoLng.value = lng;
+          geoLocateBtn.disabled = false;
+          geoLocateBtn.innerHTML = originalHtml;
+          renderQRCode();
+        },
+        (err) => {
+          geoLocateBtn.disabled = false;
+          geoLocateBtn.innerHTML = originalHtml;
+          alert('Could not retrieve location: ' + err.message);
+        },
+        { enableHighAccuracy: true, timeout: 10000 }
+      );
+    });
+
+    // --- COLOR PICKERS ---
+    function syncColors(fg: string, bg: string) {
+      if (colorFg) colorFg.value = fg;
+      if (colorFgHex) colorFgHex.value = fg;
+      if (colorBg) colorBg.value = bg;
+      if (colorBgHex) colorBgHex.value = bg;
+      renderQRCode();
+    }
+
+    colorFg?.addEventListener('input', () => {
+      if (colorFgHex) colorFgHex.value = colorFg.value;
+      renderQRCode();
+    });
+    colorFgHex?.addEventListener('input', () => {
+      if (/^#[0-9A-Fa-f]{6}$/.test(colorFgHex.value)) {
+        if (colorFg) colorFg.value = colorFgHex.value;
+        renderQRCode();
+      }
+    });
+
+    colorBg?.addEventListener('input', () => {
+      if (colorBgHex) colorBgHex.value = colorBg.value;
+      renderQRCode();
+    });
+    colorBgHex?.addEventListener('input', () => {
+      if (/^#[0-9A-Fa-f]{6}$/.test(colorBgHex.value)) {
+        if (colorBg) colorBg.value = colorBgHex.value;
+        renderQRCode();
+      }
+    });
+
+    colorPresets.forEach((preset) => {
+      preset.addEventListener('click', () => {
+        const fg = preset.dataset.fg || '#000000';
+        const bg = preset.dataset.bg || '#ffffff';
+        syncColors(fg, bg);
+      });
+    });
+
+    // --- ERROR CORRECTION LEVEL ---
+    eclCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const radio = card.querySelector<HTMLInputElement>('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+          updateECLUI();
+          renderQRCode();
+        }
+      });
+    });
+
+    function setECL(level: 'L' | 'M' | 'Q' | 'H') {
+      const radio = document.querySelector<HTMLInputElement>(`input[name="ecl"][value="${level}"]`);
+      if (radio) {
+        radio.checked = true;
+        updateECLUI();
+        renderQRCode();
+      }
+    }
+
+    function updateECLUI() {
+      const current = getECL();
+      eclCards.forEach((c) => {
+        const r = c.querySelector<HTMLInputElement>('input[type="radio"]');
+        const isActive = r?.value === current;
+        c.classList.toggle('border-blue-500', isActive);
+        c.classList.toggle('bg-blue-50/50', isActive);
+        c.classList.toggle('dark:border-blue-500', isActive);
+        c.classList.toggle('dark:bg-blue-950/30', isActive);
+      });
+
+      const hints: Record<string, string> = {
+        L: 'Low redundancy (7%) • Clearest / least dense',
+        M: 'Standard redundancy (15%) • Recommended default',
+        Q: 'Quartile redundancy (25%) • High scannability',
+        H: 'High redundancy (30%) • Recommended for logo overlay',
+      };
+      if (eclHint) eclHint.textContent = hints[current] || '';
+    }
+
+    // --- LOGO UPLOAD & HANDLING ---
+    function handleLogoFile(file: File) {
+      if (!file.type.startsWith('image/')) {
+        alert('Please upload a valid image file (PNG, JPG, SVG, WebP).');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const dataUrl = e.target?.result as string;
+        currentLogoDataUrl = dataUrl;
+        currentLogoName = file.name;
+
+        const img = new Image();
+        img.onload = () => {
+          currentLogoImg = img;
+          if (logoPreviewThumb) logoPreviewThumb.src = dataUrl;
+          if (logoFileName) logoFileName.textContent = file.name;
+          logoDropzone?.classList.add('hidden');
+          logoActiveContainer?.classList.remove('hidden');
+
+          // Recommend and automatically boost Error Correction Level to 'H'
+          setECL('H');
+          renderQRCode();
+        };
+        img.src = dataUrl;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    logoInput?.addEventListener('change', (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) handleLogoFile(file);
+    });
+
+    logoRemoveBtn?.addEventListener('click', () => {
+      currentLogoImg = null;
+      currentLogoDataUrl = '';
+      currentLogoName = '';
+      if (logoInput) logoInput.value = '';
+      logoActiveContainer?.classList.add('hidden');
+      logoDropzone?.classList.remove('hidden');
+      renderQRCode();
+    });
+
+    logoSizeRange?.addEventListener('input', () => {
+      if (logoSizeVal) logoSizeVal.textContent = `${logoSizeRange.value}%`;
+      renderQRCode();
+    });
+
+    logoBgBadge?.addEventListener('change', renderQRCode);
+
+    // --- DOWNLOAD ACTIONS ---
+    downloadPngBtn?.addEventListener('click', async () => {
+      try {
+        downloadPngBtn.disabled = true;
+        const origText = downloadPngBtn.querySelector('span')?.textContent || 'Download PNG';
+        const span = downloadPngBtn.querySelector('span');
+        if (span) span.textContent = 'Generating 1200px...';
+
+        const highRes = await generateHighResCanvas();
+        const link = document.createElement('a');
+        link.download = `qrcode-${currentTab}-${Date.now()}.png`;
+        link.href = highRes.toDataURL('image/png');
+        link.click();
+
+        if (span) span.textContent = origText;
+        downloadPngBtn.disabled = false;
+      } catch (err) {
+        console.error('PNG download error:', err);
+        downloadPngBtn.disabled = false;
+      }
+    });
+
+    downloadSvgBtn?.addEventListener('click', async () => {
+      try {
+        downloadSvgBtn.disabled = true;
+        const svgStr = await generateSVGString();
+        const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = `qrcode-${currentTab}-${Date.now()}.svg`;
+        link.href = url;
+        link.click();
+        URL.revokeObjectURL(url);
+        downloadSvgBtn.disabled = false;
+      } catch (err) {
+        console.error('SVG download error:', err);
+        downloadSvgBtn.disabled = false;
+      }
+    });
+
+    // Copy PNG to Clipboard
+    copyImageBtn?.addEventListener('click', async () => {
+      try {
+        const highRes = await generateHighResCanvas();
+        highRes.toBlob(async (blob) => {
+          if (!blob) return;
+          try {
+            await navigator.clipboard.write([
+              new ClipboardItem({ 'image/png': blob })
+            ]);
+            if (copyText) copyText.textContent = 'Copied to Clipboard! ✓';
+            setTimeout(() => {
+              if (copyText) copyText.textContent = 'Copy Image to Clipboard';
+            }, 2000);
+          } catch (e) {
+            // Fallback: Copy URL text or notify
+            const payload = getPayload();
+            await navigator.clipboard.writeText(payload);
+            if (copyText) copyText.textContent = 'Copied Payload Text! ✓';
+            setTimeout(() => {
+              if (copyText) copyText.textContent = 'Copy Image to Clipboard';
+            }, 2000);
+          }
+        }, 'image/png');
+      } catch (err) {
+        console.error('Copy to clipboard failed:', err);
+      }
+    });
+
+    // Initial render
+    renderQRCode();
+  }
+
+  // Setup on page load
+  initQRGenerator();
+  document.addEventListener('astro:page-load', initQRGenerator);
+</script>
