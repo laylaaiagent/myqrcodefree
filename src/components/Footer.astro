@@ -5,7 +5,7 @@ const year = new Date().getFullYear();
 
 <footer class="mt-auto border-t border-slate-200/80 bg-white py-12 text-slate-600 transition-colors dark:border-slate-800/80 dark:bg-slate-950 dark:text-slate-400">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
       <!-- Col 1: Brand & Privacy note -->
       <div class="space-y-3">
         <div class="flex items-center gap-2">
@@ -51,7 +51,7 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Col 3: Export & Legal -->
+      <!-- Col 3: Export & Utilities -->
       <div>
         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Export & Utilities</h3>
         <p class="mt-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
@@ -63,12 +63,37 @@ const year = new Date().getFullYear();
           <span>No sign-up required</span>
         </div>
       </div>
+
+      <!-- Col 4: Quick Links / Legal -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Pages & Legal</h3>
+        <ul class="mt-3 space-y-2 text-xs text-slate-500 dark:text-slate-400">
+          <li>
+            <a href="/about" class="transition hover:text-blue-600 dark:hover:text-blue-400">About Us</a>
+          </li>
+          <li>
+            <a href="/contact" class="transition hover:text-blue-600 dark:hover:text-blue-400">Contact Us</a>
+          </li>
+          <li>
+            <a href="/privacy" class="transition hover:text-blue-600 dark:hover:text-blue-400">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/terms" class="transition hover:text-blue-600 dark:hover:text-blue-400">Terms of Service</a>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <div class="mt-10 border-t border-slate-200/80 pt-6 text-center text-xs text-slate-500 dark:border-slate-800/80 dark:text-slate-500 sm:flex sm:items-center sm:justify-between">
       <p>© {year} MyQRCodeFree. All rights reserved.</p>
-      <div class="mt-3 sm:mt-0 flex justify-center gap-4 text-xs">
-        <span class="text-slate-400 dark:text-slate-600">Lightweight Static Micro-Tool</span>
+      <div class="mt-3 sm:mt-0 flex flex-wrap justify-center gap-4 text-xs">
+        <a href="/about" class="transition hover:text-blue-600 dark:hover:text-blue-400">About Us</a>
+        <span class="text-slate-300 dark:text-slate-700">•</span>
+        <a href="/contact" class="transition hover:text-blue-600 dark:hover:text-blue-400">Contact Us</a>
+        <span class="text-slate-300 dark:text-slate-700">•</span>
+        <a href="/privacy" class="transition hover:text-blue-600 dark:hover:text-blue-400">Privacy Policy</a>
+        <span class="text-slate-300 dark:text-slate-700">•</span>
+        <a href="/terms" class="transition hover:text-blue-600 dark:hover:text-blue-400">Terms of Service</a>
       </div>
     </div>
   </div>
